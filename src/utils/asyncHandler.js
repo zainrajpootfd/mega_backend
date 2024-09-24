@@ -1,7 +1,7 @@
 // promises method
 
 const asyncHandler = (requestHandler) => {
-  (req, res, next) => {
+  return (req, res, next) => {
     Promise.resolve(requestHandler(req, res, next)).catch((err) => next(err));
   };
 };
@@ -16,3 +16,5 @@ const asyncHandler = (requestHandler) => {
 //     res.status(500).json({ message: "Server Error", success: false });
 //   }
 // };
+
+export { asyncHandler };
